@@ -12,8 +12,6 @@ dependencies:
     - sudo apt-get update; sudo apt-get install gnupg2
     
 test:
-  override:
-    - mvn javadoc -Dmaven.test.skip=true
   post:
     - cp ./target/*-javadoc.jar $CIRCLE_ARTIFACTS
 
