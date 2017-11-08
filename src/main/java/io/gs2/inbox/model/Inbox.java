@@ -1,12 +1,28 @@
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package io.gs2.inbox.model;
 
+import java.util.List;
 import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 受信ボックス
- * 
+ *
  * @author Game Server Services, Inc.
  *
  */
@@ -14,144 +30,194 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Inbox implements Serializable {
 
-	/** 受信ボックスID */
-	String inboxId;
-	/** オーナーID */
-	String ownerId;
 	/** 受信ボックス名 */
-	String name;
+	private String name;
+
+	/** 開封時自動削除 */
+	private Boolean autoDelete;
+
+	/** 受信ボックスGRN */
+	private String inboxId;
+
 	/** サービスクラス */
-	String serviceClass;
-	/** 自動削除設定 */
-	Boolean autoDelete;
-	/** 連携用URL */
-	String cooperationUrl;
-	/** 作成日時 */
-	Long createAt;
-	
-	/**
-	 * 受信ボックスIDを取得
-	 * 
-	 * @return 受信ボックスID
-	 */
-	public String getInboxId() {
-		return inboxId;
-	}
-	
-	/**
-	 * 受信ボックスIDを設定
-	 * 
-	 * @param inboxId 受信ボックスID
-	 */
-	public void setInboxId(String inboxId) {
-		this.inboxId = inboxId;
-	}
-	
-	/**
-	 * オーナーIDを取得
-	 * 
-	 * @return オーナーID
-	 */
-	public String getOwnerId() {
-		return ownerId;
-	}
-	
-	/**
-	 * オーナーIDを設定
-	 * 
-	 * @param ownerId オーナーID
-	 */
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
-	}
-	
+	private String serviceClass;
+
+	/** 作成日時(エポック秒) */
+	private Integer createAt;
+
+	/** オーナーID */
+	private String ownerId;
+
+	/** 最終更新日時(エポック秒) */
+	private Integer updateAt;
+
+	/** メッセージの開封通知先URL */
+	private String cooperationUrl;
+
+	/** 説明文 */
+	private String description;
+
+
 	/**
 	 * 受信ボックス名を取得
-	 * 
+	 *
 	 * @return 受信ボックス名
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * 受信ボックス名を設定
-	 * 
+	 *
 	 * @param name 受信ボックス名
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	/**
-	 * サービスクラスを取得
-	 * 
-	 * @return サービスクラス
-	 */
-	public String getServiceClass() {
-		return serviceClass;
-	}
-	
-	/**
-	 * サービスクラスを設定
-	 * 
-	 * @param serviceClass サービスクラス
-	 */
-	public void setServiceClass(String serviceClass) {
-		this.serviceClass = serviceClass;
-	}
-	
+
 	/**
 	 * 開封時自動削除を取得
-	 * 
+	 *
 	 * @return 開封時自動削除
 	 */
 	public Boolean getAutoDelete() {
 		return autoDelete;
 	}
-	
+
 	/**
 	 * 開封時自動削除を設定
-	 * 
+	 *
 	 * @param autoDelete 開封時自動削除
 	 */
 	public void setAutoDelete(Boolean autoDelete) {
 		this.autoDelete = autoDelete;
 	}
-	
+
 	/**
-	 * 開封時自動削除を取得
-	 * 
-	 * @return 開封時自動削除
+	 * 受信ボックスGRNを取得
+	 *
+	 * @return 受信ボックスGRN
+	 */
+	public String getInboxId() {
+		return inboxId;
+	}
+
+	/**
+	 * 受信ボックスGRNを設定
+	 *
+	 * @param inboxId 受信ボックスGRN
+	 */
+	public void setInboxId(String inboxId) {
+		this.inboxId = inboxId;
+	}
+
+	/**
+	 * サービスクラスを取得
+	 *
+	 * @return サービスクラス
+	 */
+	public String getServiceClass() {
+		return serviceClass;
+	}
+
+	/**
+	 * サービスクラスを設定
+	 *
+	 * @param serviceClass サービスクラス
+	 */
+	public void setServiceClass(String serviceClass) {
+		this.serviceClass = serviceClass;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を取得
+	 *
+	 * @return 作成日時(エポック秒)
+	 */
+	public Integer getCreateAt() {
+		return createAt;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を設定
+	 *
+	 * @param createAt 作成日時(エポック秒)
+	 */
+	public void setCreateAt(Integer createAt) {
+		this.createAt = createAt;
+	}
+
+	/**
+	 * オーナーIDを取得
+	 *
+	 * @return オーナーID
+	 */
+	public String getOwnerId() {
+		return ownerId;
+	}
+
+	/**
+	 * オーナーIDを設定
+	 *
+	 * @param ownerId オーナーID
+	 */
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を取得
+	 *
+	 * @return 最終更新日時(エポック秒)
+	 */
+	public Integer getUpdateAt() {
+		return updateAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を設定
+	 *
+	 * @param updateAt 最終更新日時(エポック秒)
+	 */
+	public void setUpdateAt(Integer updateAt) {
+		this.updateAt = updateAt;
+	}
+
+	/**
+	 * メッセージの開封通知先URLを取得
+	 *
+	 * @return メッセージの開封通知先URL
 	 */
 	public String getCooperationUrl() {
 		return cooperationUrl;
 	}
-	
+
 	/**
-	 * 連携用URLを設定
-	 * 
-	 * @param cooperationUrl 連携用URL
+	 * メッセージの開封通知先URLを設定
+	 *
+	 * @param cooperationUrl メッセージの開封通知先URL
 	 */
 	public void setCooperationUrl(String cooperationUrl) {
 		this.cooperationUrl = cooperationUrl;
 	}
-	
+
 	/**
-	 * 作成日時を取得
-	 * 
-	 * @return 作成日時
+	 * 説明文を取得
+	 *
+	 * @return 説明文
 	 */
-	public Long getCreateAt() {
-		return createAt;
+	public String getDescription() {
+		return description;
 	}
-	
+
 	/**
-	 * 作成日時を設定
-	 * 
-	 * @param createAt 作成日時
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
 	 */
-	public void setCreateAt(Long createAt) {
-		this.createAt = createAt;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 }

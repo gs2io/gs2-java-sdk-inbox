@@ -1,68 +1,73 @@
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package io.gs2.inbox.control;
 
+import org.json.JSONObject;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import io.gs2.inbox.model.Message;
+import io.gs2.inbox.model.*;
 
 /**
- * メッセージ一覧取得結果。
- * 
  * @author Game Server Services, Inc.
- *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class DescribeMessageResult {
 
-	/** メッセージ一覧 */
-	List<Message> items;
-	/** 次のページを取得するためのトークン */
-	String nextPageToken;
-	
-	/**
-	 * 取得したメッセージ数を取得。
-	 * 
-	 * @return 取得したメッセージ数
-	 */
-	public Integer getCount() {
-		return items == null ? null : items.size();
-	}
+	/** 次のページを読み込むためのトークン */
+	private String nextPageToken;
 
-	@Deprecated
-	public void setCount(Integer count){ }
-	
+	/** メッセージ */
+	private List<Message> items;
+
+
 	/**
-	 * 取得したメッセージ一覧を取得。
-	 * 
-	 * @return メッセージ一覧
-	 */
-	public List<Message> getItems() {
-		return items;
-	}
-	
-	/**
-	 * メッセージ一覧を設定。
-	 * 
-	 * @param items メッセージ一覧
-	 */
-	public void setItems(List<Message> items) {
-		this.items = items;
-	}
-	
-	/**
-	 * 次のページを取得するためのトークンを取得。
-	 * 
-	 * {@link DescribeMessageRequest} に指定することで、次のページを取得できます。
-	 * 
-	 * @return トークン
+	 * 次のページを読み込むためのトークンを取得
+	 *
+	 * @return 次のページを読み込むためのトークン
 	 */
 	public String getNextPageToken() {
 		return nextPageToken;
 	}
 
+	/**
+	 * 次のページを読み込むためのトークンを設定
+	 *
+	 * @param nextPageToken 次のページを読み込むためのトークン
+	 */
 	public void setNextPageToken(String nextPageToken) {
 		this.nextPageToken = nextPageToken;
+	}
+
+	/**
+	 * メッセージを取得
+	 *
+	 * @return メッセージ
+	 */
+	public List<Message> getItems() {
+		return items;
+	}
+
+	/**
+	 * メッセージを設定
+	 *
+	 * @param items メッセージ
+	 */
+	public void setItems(List<Message> items) {
+		this.items = items;
 	}
 
 }

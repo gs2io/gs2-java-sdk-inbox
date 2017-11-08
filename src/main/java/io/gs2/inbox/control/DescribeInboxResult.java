@@ -1,67 +1,73 @@
+/*
+ * Copyright 2016 Game Server Services, Inc. or its affiliates. All Rights
+ * Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License").
+ * You may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package io.gs2.inbox.control;
 
+import org.json.JSONObject;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import io.gs2.inbox.model.Inbox;
+import io.gs2.inbox.model.*;
 
 /**
- * 受信ボックス一覧取得結果。
- * 
  * @author Game Server Services, Inc.
- *
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class DescribeInboxResult {
 
-	/** 受信ボックス一覧 */
-	List<Inbox> items;
-	/** 次のページを取得するためのトークン */
-	String nextPageToken;
-	
+	/** 次のページを読み込むためのトークン */
+	private String nextPageToken;
+
+	/** 受信ボックス */
+	private List<Inbox> items;
+
+
 	/**
-	 * 取得した受信ボックス数を取得。
-	 * 
-	 * @return 取得した受信ボックス数
-	 */
-	public Integer getCount() {
-		return items == null ? null : items.size();
-	}
-	
-	@Deprecated
-	public void setCount(Integer count){ }
-	
-	/**
-	 * 取得した受信ボックス一覧を取得。
-	 * 
-	 * @return 受信ボックス一覧
-	 */
-	public List<Inbox> getItems() {
-		return items;
-	}
-	
-	/**
-	 * 受信ボックス一覧を設定。
-	 * 
-	 * @param items 受信ボックス一覧
-	 */
-	public void setItems(List<Inbox> items) {
-		this.items = items;
-	}
-	
-	/**
-	 * 次のページを取得するためのトークンを取得。
-	 * 
-	 * {@link DescribeInboxRequest} に指定することで、次のページを取得できます。
-	 * 
-	 * @return トークン
+	 * 次のページを読み込むためのトークンを取得
+	 *
+	 * @return 次のページを読み込むためのトークン
 	 */
 	public String getNextPageToken() {
 		return nextPageToken;
 	}
-	
+
+	/**
+	 * 次のページを読み込むためのトークンを設定
+	 *
+	 * @param nextPageToken 次のページを読み込むためのトークン
+	 */
 	public void setNextPageToken(String nextPageToken) {
 		this.nextPageToken = nextPageToken;
 	}
+
+	/**
+	 * 受信ボックスを取得
+	 *
+	 * @return 受信ボックス
+	 */
+	public List<Inbox> getItems() {
+		return items;
+	}
+
+	/**
+	 * 受信ボックスを設定
+	 *
+	 * @param items 受信ボックス
+	 */
+	public void setItems(List<Inbox> items) {
+		this.items = items;
+	}
+
 }
