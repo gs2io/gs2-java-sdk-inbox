@@ -61,17 +61,25 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public CreateInboxResult createInbox(CreateInboxRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("serviceClass", request.getServiceClass())
-				.put("name", request.getName());
+				.put("name", request.getName())
+				.put("serviceClass", request.getServiceClass());
 
-        if(request.getCooperationUrl() != null) body.put("cooperationUrl", request.getCooperationUrl());
         if(request.getAutoDelete() != null) body.put("autoDelete", request.getAutoDelete());
+        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
+        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
+        if(request.getCooperationUrl() != null) body.put("cooperationUrl", request.getCooperationUrl());
+        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
+        if(request.getReceiveMessageTriggerScript() != null) body.put("receiveMessageTriggerScript", request.getReceiveMessageTriggerScript());
+        if(request.getReadMessageTriggerScript() != null) body.put("readMessageTriggerScript", request.getReadMessageTriggerScript());
+        if(request.getDeleteMessageDoneTriggerScript() != null) body.put("deleteMessageDoneTriggerScript", request.getDeleteMessageDoneTriggerScript());
 		HttpPost post = createHttpPost(
 				Gs2Constant.ENDPOINT_HOST + "/inbox",
 				credential,
@@ -91,6 +99,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteInbox(DeleteInboxRequest request) {
@@ -119,6 +128,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteMessage(DeleteMessageRequest request) {
@@ -148,6 +158,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 */
 
 	public void deleteMessages(DeleteMessagesRequest request) {
@@ -180,7 +191,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeInboxResult describeInbox(DescribeInboxRequest request) {
@@ -215,7 +228,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeMessageResult describeMessage(DescribeMessageRequest request) {
@@ -249,7 +264,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public DescribeServiceClassResult describeServiceClass(DescribeServiceClassRequest request) {
@@ -276,7 +293,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetInboxResult getInbox(GetInboxRequest request) {
@@ -303,7 +322,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetInboxStatusResult getInboxStatus(GetInboxStatusRequest request) {
@@ -332,7 +353,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public GetMessageResult getMessage(GetMessageRequest request) {
@@ -361,7 +384,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public ReadMessageResult readMessage(ReadMessageRequest request) {
@@ -401,7 +426,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public ReadMessagesResult readMessages(ReadMessagesRequest request) {
@@ -431,7 +458,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public SendMessageResult sendMessage(SendMessageRequest request) {
@@ -460,15 +489,23 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 * <br>
 	 *
 	 * @param request リクエストパラメータ
+
 	 * @return 結果
+
 	 */
 
 	public UpdateInboxResult updateInbox(UpdateInboxRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode();
 
+        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
         if(request.getServiceClass() != null) body.put("serviceClass", request.getServiceClass());
         if(request.getCooperationUrl() != null) body.put("cooperationUrl", request.getCooperationUrl());
+        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
+        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
+        if(request.getReceiveMessageTriggerScript() != null) body.put("receiveMessageTriggerScript", request.getReceiveMessageTriggerScript());
+        if(request.getReadMessageTriggerScript() != null) body.put("readMessageTriggerScript", request.getReadMessageTriggerScript());
+        if(request.getDeleteMessageDoneTriggerScript() != null) body.put("deleteMessageDoneTriggerScript", request.getDeleteMessageDoneTriggerScript());
 		HttpPut put = createHttpPut(
 				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "",
 				credential,

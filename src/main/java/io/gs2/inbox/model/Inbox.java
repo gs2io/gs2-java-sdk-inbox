@@ -42,17 +42,35 @@ public class Inbox implements Serializable {
 	/** サービスクラス */
 	private String serviceClass;
 
+	/** メッセージ開封完了時 に実行されるGS2-Script */
+	private String readMessageDoneTriggerScript;
+
 	/** 作成日時(エポック秒) */
 	private Integer createAt;
+
+	/** メッセージ削除完了時 に実行されるGS2-Script */
+	private String deleteMessageDoneTriggerScript;
+
+	/** メッセージ受信完了時 に実行されるGS2-Script */
+	private String receiveMessageDoneTriggerScript;
 
 	/** オーナーID */
 	private String ownerId;
 
+	/** メッセージの開封通知先URL */
+	private String cooperationUrl;
+
+	/** メッセージ削除時 に実行されるGS2-Script */
+	private String deleteMessageTriggerScript;
+
+	/** メッセージ受信時 に実行されるGS2-Script */
+	private String receiveMessageTriggerScript;
+
 	/** 最終更新日時(エポック秒) */
 	private Integer updateAt;
 
-	/** メッセージの開封通知先URL */
-	private String cooperationUrl;
+	/** メッセージ開封時 に実行されるGS2-Script */
+	private String readMessageTriggerScript;
 
 	/** 説明文 */
 	private String description;
@@ -131,6 +149,24 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ開封完了時 に実行されるGS2-Script
+	 */
+	public String getReadMessageDoneTriggerScript() {
+		return readMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 */
+	public void setReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
+		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
+	}
+
+	/**
 	 * 作成日時(エポック秒)を取得
 	 *
 	 * @return 作成日時(エポック秒)
@@ -146,6 +182,42 @@ public class Inbox implements Serializable {
 	 */
 	public void setCreateAt(Integer createAt) {
 		this.createAt = createAt;
+	}
+
+	/**
+	 * メッセージ削除完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ削除完了時 に実行されるGS2-Script
+	 */
+	public String getDeleteMessageDoneTriggerScript() {
+		return deleteMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageDoneTriggerScript メッセージ削除完了時 に実行されるGS2-Script
+	 */
+	public void setDeleteMessageDoneTriggerScript(String deleteMessageDoneTriggerScript) {
+		this.deleteMessageDoneTriggerScript = deleteMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ受信完了時 に実行されるGS2-Script
+	 */
+	public String getReceiveMessageDoneTriggerScript() {
+		return receiveMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
+	 */
+	public void setReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
+		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
 	}
 
 	/**
@@ -167,6 +239,60 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージの開封通知先URLを取得
+	 *
+	 * @return メッセージの開封通知先URL
+	 */
+	public String getCooperationUrl() {
+		return cooperationUrl;
+	}
+
+	/**
+	 * メッセージの開封通知先URLを設定
+	 *
+	 * @param cooperationUrl メッセージの開封通知先URL
+	 */
+	public void setCooperationUrl(String cooperationUrl) {
+		this.cooperationUrl = cooperationUrl;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ削除時 に実行されるGS2-Script
+	 */
+	public String getDeleteMessageTriggerScript() {
+		return deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
+	 */
+	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
+		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ受信時 に実行されるGS2-Script
+	 */
+	public String getReceiveMessageTriggerScript() {
+		return receiveMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageTriggerScript メッセージ受信時 に実行されるGS2-Script
+	 */
+	public void setReceiveMessageTriggerScript(String receiveMessageTriggerScript) {
+		this.receiveMessageTriggerScript = receiveMessageTriggerScript;
+	}
+
+	/**
 	 * 最終更新日時(エポック秒)を取得
 	 *
 	 * @return 最終更新日時(エポック秒)
@@ -185,21 +311,21 @@ public class Inbox implements Serializable {
 	}
 
 	/**
-	 * メッセージの開封通知先URLを取得
+	 * メッセージ開封時 に実行されるGS2-Scriptを取得
 	 *
-	 * @return メッセージの開封通知先URL
+	 * @return メッセージ開封時 に実行されるGS2-Script
 	 */
-	public String getCooperationUrl() {
-		return cooperationUrl;
+	public String getReadMessageTriggerScript() {
+		return readMessageTriggerScript;
 	}
 
 	/**
-	 * メッセージの開封通知先URLを設定
+	 * メッセージ開封時 に実行されるGS2-Scriptを設定
 	 *
-	 * @param cooperationUrl メッセージの開封通知先URL
+	 * @param readMessageTriggerScript メッセージ開封時 に実行されるGS2-Script
 	 */
-	public void setCooperationUrl(String cooperationUrl) {
-		this.cooperationUrl = cooperationUrl;
+	public void setReadMessageTriggerScript(String readMessageTriggerScript) {
+		this.readMessageTriggerScript = readMessageTriggerScript;
 	}
 
 	/**
