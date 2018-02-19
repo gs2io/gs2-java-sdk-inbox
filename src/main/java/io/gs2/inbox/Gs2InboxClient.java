@@ -73,12 +73,12 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				.put("serviceClass", request.getServiceClass());
 
         if(request.getAutoDelete() != null) body.put("autoDelete", request.getAutoDelete());
-        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
-        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
         if(request.getCooperationUrl() != null) body.put("cooperationUrl", request.getCooperationUrl());
-        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
         if(request.getReceiveMessageTriggerScript() != null) body.put("receiveMessageTriggerScript", request.getReceiveMessageTriggerScript());
+        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
         if(request.getReadMessageTriggerScript() != null) body.put("readMessageTriggerScript", request.getReadMessageTriggerScript());
+        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
+        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
         if(request.getDeleteMessageDoneTriggerScript() != null) body.put("deleteMessageDoneTriggerScript", request.getDeleteMessageDoneTriggerScript());
 		HttpPost post = createHttpPost(
 				Gs2Constant.ENDPOINT_HOST + "/inbox",
@@ -87,6 +87,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				CreateInboxRequest.Constant.MODULE,
 				CreateInboxRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, CreateInboxResult.class);
@@ -104,7 +107,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public void deleteInbox(DeleteInboxRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "";
 
 
 
@@ -114,6 +117,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DeleteInboxRequest.Constant.MODULE,
 				DeleteInboxRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		doRequest(delete, null);
@@ -133,7 +139,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public void deleteMessage(DeleteMessageRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null ? "null" : request.getMessageId()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null || request.getMessageId().equals("") ? "null" : request.getMessageId()) + "";
 
 
 
@@ -143,6 +149,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DeleteMessageRequest.Constant.MODULE,
 				DeleteMessageRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         delete.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -163,7 +172,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public void deleteMessages(DeleteMessagesRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message/multiple";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/multiple";
 
         List<NameValuePair> queryString = new ArrayList<>();
         if(request.getMessageIds() != null) queryString.add(new BasicNameValuePair("messageIds", String.valueOf(request.getMessageIds())));
@@ -178,6 +187,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DeleteMessagesRequest.Constant.MODULE,
 				DeleteMessagesRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         delete.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -214,6 +226,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DescribeInboxRequest.Constant.MODULE,
 				DescribeInboxRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeInboxResult.class);
@@ -235,7 +250,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public DescribeMessageResult describeMessage(DescribeMessageRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message";
 
         List<NameValuePair> queryString = new ArrayList<>();
         if(request.getPageToken() != null) queryString.add(new BasicNameValuePair("pageToken", String.valueOf(request.getPageToken())));
@@ -251,6 +266,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DescribeMessageRequest.Constant.MODULE,
 				DescribeMessageRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         get.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -281,6 +299,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				DescribeServiceClassRequest.Constant.MODULE,
 				DescribeServiceClassRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, DescribeServiceClassResult.class);
@@ -300,7 +321,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public GetInboxResult getInbox(GetInboxRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "";
 
 
 
@@ -310,6 +331,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				GetInboxRequest.Constant.MODULE,
 				GetInboxRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetInboxResult.class);
@@ -329,7 +353,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public GetInboxStatusResult getInboxStatus(GetInboxStatusRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/status";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/status";
 
 
 
@@ -339,6 +363,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				GetInboxStatusRequest.Constant.MODULE,
 				GetInboxStatusRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetInboxStatusResult.class);
@@ -360,7 +387,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public GetMessageResult getMessage(GetMessageRequest request) {
 
-	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null ? "null" : request.getMessageId()) + "";
+	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null || request.getMessageId().equals("") ? "null" : request.getMessageId()) + "";
 
 
 
@@ -370,6 +397,9 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				ENDPOINT,
 				GetMessageRequest.Constant.MODULE,
 				GetMessageRequest.Constant.FUNCTION);
+        if(request.getRequestId() != null) {
+            get.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(get, GetMessageResult.class);
@@ -394,12 +424,15 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 		ObjectNode body = JsonNodeFactory.instance.objectNode();
 
 		HttpPost post = createHttpPost(
-				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null ? "null" : request.getMessageId()) + "",
+				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null || request.getMessageId().equals("") ? "null" : request.getMessageId()) + "",
 				credential,
 				ENDPOINT,
 				ReadMessageRequest.Constant.MODULE,
 				ReadMessageRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         post.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -437,12 +470,15 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 				.put("messageIds", request.getMessageIds());
 
 		HttpPost post = createHttpPost(
-				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message/multiple",
+				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/multiple",
 				credential,
 				ENDPOINT,
 				ReadMessagesRequest.Constant.MODULE,
 				ReadMessagesRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
         post.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
@@ -466,17 +502,20 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	public SendMessageResult sendMessage(SendMessageRequest request) {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("message", request.getMessage())
-				.put("userId", request.getUserId());
+				.put("userId", request.getUserId())
+				.put("message", request.getMessage());
 
         if(request.getCooperation() != null) body.put("cooperation", request.getCooperation());
 		HttpPost post = createHttpPost(
-				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "/message",
+				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message",
 				credential,
 				ENDPOINT,
 				SendMessageRequest.Constant.MODULE,
 				SendMessageRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            post.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(post, SendMessageResult.class);
@@ -498,21 +537,24 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 		ObjectNode body = JsonNodeFactory.instance.objectNode();
 
-        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
         if(request.getServiceClass() != null) body.put("serviceClass", request.getServiceClass());
         if(request.getCooperationUrl() != null) body.put("cooperationUrl", request.getCooperationUrl());
-        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
-        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
         if(request.getReceiveMessageTriggerScript() != null) body.put("receiveMessageTriggerScript", request.getReceiveMessageTriggerScript());
+        if(request.getReceiveMessageDoneTriggerScript() != null) body.put("receiveMessageDoneTriggerScript", request.getReceiveMessageDoneTriggerScript());
         if(request.getReadMessageTriggerScript() != null) body.put("readMessageTriggerScript", request.getReadMessageTriggerScript());
+        if(request.getReadMessageDoneTriggerScript() != null) body.put("readMessageDoneTriggerScript", request.getReadMessageDoneTriggerScript());
+        if(request.getDeleteMessageTriggerScript() != null) body.put("deleteMessageTriggerScript", request.getDeleteMessageTriggerScript());
         if(request.getDeleteMessageDoneTriggerScript() != null) body.put("deleteMessageDoneTriggerScript", request.getDeleteMessageDoneTriggerScript());
 		HttpPut put = createHttpPut(
-				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null ? "null" : request.getInboxName()) + "",
+				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "",
 				credential,
 				ENDPOINT,
 				UpdateInboxRequest.Constant.MODULE,
 				UpdateInboxRequest.Constant.FUNCTION,
 				body.toString());
+        if(request.getRequestId() != null) {
+            put.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
+        }
 
 
 		return doRequest(put, UpdateInboxResult.class);
