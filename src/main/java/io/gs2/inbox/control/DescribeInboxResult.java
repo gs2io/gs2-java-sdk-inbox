@@ -27,30 +27,12 @@ import io.gs2.inbox.model.*;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class DescribeInboxResult {
 
-	/** 次のページを読み込むためのトークン */
-	private String nextPageToken;
-
 	/** 受信ボックス */
 	private List<Inbox> items;
 
+	/** 次のページを読み込むためのトークン */
+	private String nextPageToken;
 
-	/**
-	 * 次のページを読み込むためのトークンを取得
-	 *
-	 * @return 次のページを読み込むためのトークン
-	 */
-	public String getNextPageToken() {
-		return nextPageToken;
-	}
-
-	/**
-	 * 次のページを読み込むためのトークンを設定
-	 *
-	 * @param nextPageToken 次のページを読み込むためのトークン
-	 */
-	public void setNextPageToken(String nextPageToken) {
-		this.nextPageToken = nextPageToken;
-	}
 
 	/**
 	 * 受信ボックスを取得
@@ -68,6 +50,24 @@ public class DescribeInboxResult {
 	 */
 	public void setItems(List<Inbox> items) {
 		this.items = items;
+	}
+
+	/**
+	 * 次のページを読み込むためのトークンを取得
+	 *
+	 * @return 次のページを読み込むためのトークン
+	 */
+	public String getNextPageToken() {
+		return nextPageToken;
+	}
+
+	/**
+	 * 次のページを読み込むためのトークンを設定
+	 *
+	 * @param nextPageToken 次のページを読み込むためのトークン
+	 */
+	public void setNextPageToken(String nextPageToken) {
+		this.nextPageToken = nextPageToken;
 	}
 
 }

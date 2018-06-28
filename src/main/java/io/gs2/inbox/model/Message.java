@@ -30,81 +30,27 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Message implements Serializable {
 
-	/** 既読状態 */
-	private Boolean read;
-
-	/** 受信日時(エポック秒) */
-	private Integer date;
-
-	/** 開封時に通知を出すか */
-	private Boolean cooperation;
-
 	/** メッセージID */
 	private String messageId;
 
 	/** 受信ボックスGRN */
 	private String inboxId;
 
-	/** メッセージ本文 */
-	private String message;
-
 	/** 発言者ユーザID */
 	private String userId;
 
+	/** メッセージ本文 */
+	private String message;
 
-	/**
-	 * 既読状態を取得
-	 *
-	 * @return 既読状態
-	 */
-	public Boolean getRead() {
-		return read;
-	}
+	/** 開封時に通知を出すか */
+	private Boolean cooperation;
 
-	/**
-	 * 既読状態を設定
-	 *
-	 * @param read 既読状態
-	 */
-	public void setRead(Boolean read) {
-		this.read = read;
-	}
+	/** 既読状態 */
+	private Boolean read;
 
-	/**
-	 * 受信日時(エポック秒)を取得
-	 *
-	 * @return 受信日時(エポック秒)
-	 */
-	public Integer getDate() {
-		return date;
-	}
+	/** 受信日時(エポック秒) */
+	private Integer date;
 
-	/**
-	 * 受信日時(エポック秒)を設定
-	 *
-	 * @param date 受信日時(エポック秒)
-	 */
-	public void setDate(Integer date) {
-		this.date = date;
-	}
-
-	/**
-	 * 開封時に通知を出すかを取得
-	 *
-	 * @return 開封時に通知を出すか
-	 */
-	public Boolean getCooperation() {
-		return cooperation;
-	}
-
-	/**
-	 * 開封時に通知を出すかを設定
-	 *
-	 * @param cooperation 開封時に通知を出すか
-	 */
-	public void setCooperation(Boolean cooperation) {
-		this.cooperation = cooperation;
-	}
 
 	/**
 	 * メッセージIDを取得
@@ -143,6 +89,24 @@ public class Message implements Serializable {
 	}
 
 	/**
+	 * 発言者ユーザIDを取得
+	 *
+	 * @return 発言者ユーザID
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * 発言者ユーザIDを設定
+	 *
+	 * @param userId 発言者ユーザID
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
 	 * メッセージ本文を取得
 	 *
 	 * @return メッセージ本文
@@ -161,21 +125,57 @@ public class Message implements Serializable {
 	}
 
 	/**
-	 * 発言者ユーザIDを取得
+	 * 開封時に通知を出すかを取得
 	 *
-	 * @return 発言者ユーザID
+	 * @return 開封時に通知を出すか
 	 */
-	public String getUserId() {
-		return userId;
+	public Boolean getCooperation() {
+		return cooperation;
 	}
 
 	/**
-	 * 発言者ユーザIDを設定
+	 * 開封時に通知を出すかを設定
 	 *
-	 * @param userId 発言者ユーザID
+	 * @param cooperation 開封時に通知を出すか
 	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setCooperation(Boolean cooperation) {
+		this.cooperation = cooperation;
+	}
+
+	/**
+	 * 既読状態を取得
+	 *
+	 * @return 既読状態
+	 */
+	public Boolean getRead() {
+		return read;
+	}
+
+	/**
+	 * 既読状態を設定
+	 *
+	 * @param read 既読状態
+	 */
+	public void setRead(Boolean read) {
+		this.read = read;
+	}
+
+	/**
+	 * 受信日時(エポック秒)を取得
+	 *
+	 * @return 受信日時(エポック秒)
+	 */
+	public Integer getDate() {
+		return date;
+	}
+
+	/**
+	 * 受信日時(エポック秒)を設定
+	 *
+	 * @param date 受信日時(エポック秒)
+	 */
+	public void setDate(Integer date) {
+		this.date = date;
 	}
 
 }

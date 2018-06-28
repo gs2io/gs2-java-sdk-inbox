@@ -30,87 +30,51 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Inbox implements Serializable {
 
-	/** 受信ボックス名 */
-	private String name;
-
-	/** 開封時自動削除 */
-	private Boolean autoDelete;
-
 	/** 受信ボックスGRN */
 	private String inboxId;
-
-	/** サービスクラス */
-	private String serviceClass;
-
-	/** メッセージ開封完了時 に実行されるGS2-Script */
-	private String readMessageDoneTriggerScript;
-
-	/** 作成日時(エポック秒) */
-	private Integer createAt;
-
-	/** メッセージ削除完了時 に実行されるGS2-Script */
-	private String deleteMessageDoneTriggerScript;
-
-	/** メッセージ受信完了時 に実行されるGS2-Script */
-	private String receiveMessageDoneTriggerScript;
 
 	/** オーナーID */
 	private String ownerId;
 
-	/** メッセージの開封通知先URL */
-	private String cooperationUrl;
-
-	/** メッセージ削除時 に実行されるGS2-Script */
-	private String deleteMessageTriggerScript;
-
-	/** メッセージ受信時 に実行されるGS2-Script */
-	private String receiveMessageTriggerScript;
-
-	/** 最終更新日時(エポック秒) */
-	private Integer updateAt;
-
-	/** メッセージ開封時 に実行されるGS2-Script */
-	private String readMessageTriggerScript;
+	/** 受信ボックス名 */
+	private String name;
 
 	/** 説明文 */
 	private String description;
 
+	/** サービスクラス */
+	private String serviceClass;
 
-	/**
-	 * 受信ボックス名を取得
-	 *
-	 * @return 受信ボックス名
-	 */
-	public String getName() {
-		return name;
-	}
+	/** 開封時自動削除 */
+	private Boolean autoDelete;
 
-	/**
-	 * 受信ボックス名を設定
-	 *
-	 * @param name 受信ボックス名
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+	/** メッセージの開封通知先URL */
+	private String cooperationUrl;
 
-	/**
-	 * 開封時自動削除を取得
-	 *
-	 * @return 開封時自動削除
-	 */
-	public Boolean getAutoDelete() {
-		return autoDelete;
-	}
+	/** メッセージ受信時 に実行されるGS2-Script */
+	private String receiveMessageTriggerScript;
 
-	/**
-	 * 開封時自動削除を設定
-	 *
-	 * @param autoDelete 開封時自動削除
-	 */
-	public void setAutoDelete(Boolean autoDelete) {
-		this.autoDelete = autoDelete;
-	}
+	/** メッセージ受信完了時 に実行されるGS2-Script */
+	private String receiveMessageDoneTriggerScript;
+
+	/** メッセージ開封時 に実行されるGS2-Script */
+	private String readMessageTriggerScript;
+
+	/** メッセージ開封完了時 に実行されるGS2-Script */
+	private String readMessageDoneTriggerScript;
+
+	/** メッセージ削除時 に実行されるGS2-Script */
+	private String deleteMessageTriggerScript;
+
+	/** メッセージ削除完了時 に実行されるGS2-Script */
+	private String deleteMessageDoneTriggerScript;
+
+	/** 作成日時(エポック秒) */
+	private Integer createAt;
+
+	/** 最終更新日時(エポック秒) */
+	private Integer updateAt;
+
 
 	/**
 	 * 受信ボックスGRNを取得
@@ -128,96 +92,6 @@ public class Inbox implements Serializable {
 	 */
 	public void setInboxId(String inboxId) {
 		this.inboxId = inboxId;
-	}
-
-	/**
-	 * サービスクラスを取得
-	 *
-	 * @return サービスクラス
-	 */
-	public String getServiceClass() {
-		return serviceClass;
-	}
-
-	/**
-	 * サービスクラスを設定
-	 *
-	 * @param serviceClass サービスクラス
-	 */
-	public void setServiceClass(String serviceClass) {
-		this.serviceClass = serviceClass;
-	}
-
-	/**
-	 * メッセージ開封完了時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ開封完了時 に実行されるGS2-Script
-	 */
-	public String getReadMessageDoneTriggerScript() {
-		return readMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
-	 */
-	public void setReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
-		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
-	}
-
-	/**
-	 * 作成日時(エポック秒)を取得
-	 *
-	 * @return 作成日時(エポック秒)
-	 */
-	public Integer getCreateAt() {
-		return createAt;
-	}
-
-	/**
-	 * 作成日時(エポック秒)を設定
-	 *
-	 * @param createAt 作成日時(エポック秒)
-	 */
-	public void setCreateAt(Integer createAt) {
-		this.createAt = createAt;
-	}
-
-	/**
-	 * メッセージ削除完了時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ削除完了時 に実行されるGS2-Script
-	 */
-	public String getDeleteMessageDoneTriggerScript() {
-		return deleteMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ削除完了時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param deleteMessageDoneTriggerScript メッセージ削除完了時 に実行されるGS2-Script
-	 */
-	public void setDeleteMessageDoneTriggerScript(String deleteMessageDoneTriggerScript) {
-		this.deleteMessageDoneTriggerScript = deleteMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ受信完了時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ受信完了時 に実行されるGS2-Script
-	 */
-	public String getReceiveMessageDoneTriggerScript() {
-		return receiveMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
-	 */
-	public void setReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
-		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
 	}
 
 	/**
@@ -239,6 +113,78 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * 受信ボックス名を取得
+	 *
+	 * @return 受信ボックス名
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * 受信ボックス名を設定
+	 *
+	 * @param name 受信ボックス名
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * 説明文を取得
+	 *
+	 * @return 説明文
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * サービスクラスを取得
+	 *
+	 * @return サービスクラス
+	 */
+	public String getServiceClass() {
+		return serviceClass;
+	}
+
+	/**
+	 * サービスクラスを設定
+	 *
+	 * @param serviceClass サービスクラス
+	 */
+	public void setServiceClass(String serviceClass) {
+		this.serviceClass = serviceClass;
+	}
+
+	/**
+	 * 開封時自動削除を取得
+	 *
+	 * @return 開封時自動削除
+	 */
+	public Boolean getAutoDelete() {
+		return autoDelete;
+	}
+
+	/**
+	 * 開封時自動削除を設定
+	 *
+	 * @param autoDelete 開封時自動削除
+	 */
+	public void setAutoDelete(Boolean autoDelete) {
+		this.autoDelete = autoDelete;
+	}
+
+	/**
 	 * メッセージの開封通知先URLを取得
 	 *
 	 * @return メッセージの開封通知先URL
@@ -254,24 +200,6 @@ public class Inbox implements Serializable {
 	 */
 	public void setCooperationUrl(String cooperationUrl) {
 		this.cooperationUrl = cooperationUrl;
-	}
-
-	/**
-	 * メッセージ削除時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ削除時 に実行されるGS2-Script
-	 */
-	public String getDeleteMessageTriggerScript() {
-		return deleteMessageTriggerScript;
-	}
-
-	/**
-	 * メッセージ削除時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
-	 */
-	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
-		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
 	}
 
 	/**
@@ -293,21 +221,21 @@ public class Inbox implements Serializable {
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を取得
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを取得
 	 *
-	 * @return 最終更新日時(エポック秒)
+	 * @return メッセージ受信完了時 に実行されるGS2-Script
 	 */
-	public Integer getUpdateAt() {
-		return updateAt;
+	public String getReceiveMessageDoneTriggerScript() {
+		return receiveMessageDoneTriggerScript;
 	}
 
 	/**
-	 * 最終更新日時(エポック秒)を設定
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
 	 *
-	 * @param updateAt 最終更新日時(エポック秒)
+	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
 	 */
-	public void setUpdateAt(Integer updateAt) {
-		this.updateAt = updateAt;
+	public void setReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
+		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
 	}
 
 	/**
@@ -329,21 +257,93 @@ public class Inbox implements Serializable {
 	}
 
 	/**
-	 * 説明文を取得
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを取得
 	 *
-	 * @return 説明文
+	 * @return メッセージ開封完了時 に実行されるGS2-Script
 	 */
-	public String getDescription() {
-		return description;
+	public String getReadMessageDoneTriggerScript() {
+		return readMessageDoneTriggerScript;
 	}
 
 	/**
-	 * 説明文を設定
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
 	 *
-	 * @param description 説明文
+	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
+		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ削除時 に実行されるGS2-Script
+	 */
+	public String getDeleteMessageTriggerScript() {
+		return deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
+	 */
+	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
+		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ削除完了時 に実行されるGS2-Script
+	 */
+	public String getDeleteMessageDoneTriggerScript() {
+		return deleteMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageDoneTriggerScript メッセージ削除完了時 に実行されるGS2-Script
+	 */
+	public void setDeleteMessageDoneTriggerScript(String deleteMessageDoneTriggerScript) {
+		this.deleteMessageDoneTriggerScript = deleteMessageDoneTriggerScript;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を取得
+	 *
+	 * @return 作成日時(エポック秒)
+	 */
+	public Integer getCreateAt() {
+		return createAt;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を設定
+	 *
+	 * @param createAt 作成日時(エポック秒)
+	 */
+	public void setCreateAt(Integer createAt) {
+		this.createAt = createAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を取得
+	 *
+	 * @return 最終更新日時(エポック秒)
+	 */
+	public Integer getUpdateAt() {
+		return updateAt;
+	}
+
+	/**
+	 * 最終更新日時(エポック秒)を設定
+	 *
+	 * @param updateAt 最終更新日時(エポック秒)
+	 */
+	public void setUpdateAt(Integer updateAt) {
+		this.updateAt = updateAt;
 	}
 
 }

@@ -34,26 +34,29 @@ public class UpdateInboxRequest extends Gs2BasicRequest<UpdateInboxRequest> {
 	/** 受信ボックスの名前を指定します。 */
 	private String inboxName;
 
-	/** メッセージ開封完了時 に実行されるGS2-Script */
-	private String readMessageDoneTriggerScript;
+	/** 説明文 */
+	private String description;
 
 	/** サービスクラス */
 	private String serviceClass;
 
-	/** 開封時通知設定が有効な場合に通知するURL */
+	/** メッセージの開封通知先URL */
 	private String cooperationUrl;
-
-	/** メッセージ受信完了時 に実行されるGS2-Script */
-	private String receiveMessageDoneTriggerScript;
-
-	/** メッセージ削除時 に実行されるGS2-Script */
-	private String deleteMessageTriggerScript;
 
 	/** メッセージ受信時 に実行されるGS2-Script */
 	private String receiveMessageTriggerScript;
 
+	/** メッセージ受信完了時 に実行されるGS2-Script */
+	private String receiveMessageDoneTriggerScript;
+
 	/** メッセージ開封時 に実行されるGS2-Script */
 	private String readMessageTriggerScript;
+
+	/** メッセージ開封完了時 に実行されるGS2-Script */
+	private String readMessageDoneTriggerScript;
+
+	/** メッセージ削除時 に実行されるGS2-Script */
+	private String deleteMessageTriggerScript;
 
 	/** メッセージ削除完了時 に実行されるGS2-Script */
 	private String deleteMessageDoneTriggerScript;
@@ -89,31 +92,31 @@ public class UpdateInboxRequest extends Gs2BasicRequest<UpdateInboxRequest> {
 	}
 
 	/**
-	 * メッセージ開封完了時 に実行されるGS2-Scriptを取得
+	 * 説明文を取得
 	 *
-	 * @return メッセージ開封完了時 に実行されるGS2-Script
+	 * @return 説明文
 	 */
-	public String getReadMessageDoneTriggerScript() {
-		return readMessageDoneTriggerScript;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
-	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 * 説明文を設定
 	 *
-	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 * @param description 説明文
 	 */
-	public void setReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
-		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	/**
-	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 * 説明文を設定
 	 *
-	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 * @param description 説明文
 	 * @return this
 	 */
-	public UpdateInboxRequest withReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
-		setReadMessageDoneTriggerScript(readMessageDoneTriggerScript);
+	public UpdateInboxRequest withDescription(String description) {
+		setDescription(description);
 		return this;
 	}
 
@@ -147,89 +150,31 @@ public class UpdateInboxRequest extends Gs2BasicRequest<UpdateInboxRequest> {
 	}
 
 	/**
-	 * 開封時通知設定が有効な場合に通知するURLを取得
+	 * メッセージの開封通知先URLを取得
 	 *
-	 * @return 開封時通知設定が有効な場合に通知するURL
+	 * @return メッセージの開封通知先URL
 	 */
 	public String getCooperationUrl() {
 		return cooperationUrl;
 	}
 
 	/**
-	 * 開封時通知設定が有効な場合に通知するURLを設定
+	 * メッセージの開封通知先URLを設定
 	 *
-	 * @param cooperationUrl 開封時通知設定が有効な場合に通知するURL
+	 * @param cooperationUrl メッセージの開封通知先URL
 	 */
 	public void setCooperationUrl(String cooperationUrl) {
 		this.cooperationUrl = cooperationUrl;
 	}
 
 	/**
-	 * 開封時通知設定が有効な場合に通知するURLを設定
+	 * メッセージの開封通知先URLを設定
 	 *
-	 * @param cooperationUrl 開封時通知設定が有効な場合に通知するURL
+	 * @param cooperationUrl メッセージの開封通知先URL
 	 * @return this
 	 */
 	public UpdateInboxRequest withCooperationUrl(String cooperationUrl) {
 		setCooperationUrl(cooperationUrl);
-		return this;
-	}
-
-	/**
-	 * メッセージ受信完了時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ受信完了時 に実行されるGS2-Script
-	 */
-	public String getReceiveMessageDoneTriggerScript() {
-		return receiveMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
-	 */
-	public void setReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
-		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
-	}
-
-	/**
-	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
-	 * @return this
-	 */
-	public UpdateInboxRequest withReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
-		setReceiveMessageDoneTriggerScript(receiveMessageDoneTriggerScript);
-		return this;
-	}
-
-	/**
-	 * メッセージ削除時 に実行されるGS2-Scriptを取得
-	 *
-	 * @return メッセージ削除時 に実行されるGS2-Script
-	 */
-	public String getDeleteMessageTriggerScript() {
-		return deleteMessageTriggerScript;
-	}
-
-	/**
-	 * メッセージ削除時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
-	 */
-	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
-		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
-	}
-
-	/**
-	 * メッセージ削除時 に実行されるGS2-Scriptを設定
-	 *
-	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
-	 * @return this
-	 */
-	public UpdateInboxRequest withDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
-		setDeleteMessageTriggerScript(deleteMessageTriggerScript);
 		return this;
 	}
 
@@ -263,6 +208,35 @@ public class UpdateInboxRequest extends Gs2BasicRequest<UpdateInboxRequest> {
 	}
 
 	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ受信完了時 に実行されるGS2-Script
+	 */
+	public String getReceiveMessageDoneTriggerScript() {
+		return receiveMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
+	 */
+	public void setReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
+		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public UpdateInboxRequest withReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
+		setReceiveMessageDoneTriggerScript(receiveMessageDoneTriggerScript);
+		return this;
+	}
+
+	/**
 	 * メッセージ開封時 に実行されるGS2-Scriptを取得
 	 *
 	 * @return メッセージ開封時 に実行されるGS2-Script
@@ -288,6 +262,64 @@ public class UpdateInboxRequest extends Gs2BasicRequest<UpdateInboxRequest> {
 	 */
 	public UpdateInboxRequest withReadMessageTriggerScript(String readMessageTriggerScript) {
 		setReadMessageTriggerScript(readMessageTriggerScript);
+		return this;
+	}
+
+	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ開封完了時 に実行されるGS2-Script
+	 */
+	public String getReadMessageDoneTriggerScript() {
+		return readMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 */
+	public void setReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
+		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
+	}
+
+	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public UpdateInboxRequest withReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
+		setReadMessageDoneTriggerScript(readMessageDoneTriggerScript);
+		return this;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを取得
+	 *
+	 * @return メッセージ削除時 に実行されるGS2-Script
+	 */
+	public String getDeleteMessageTriggerScript() {
+		return deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
+	 */
+	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
+		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public UpdateInboxRequest withDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
+		setDeleteMessageTriggerScript(deleteMessageTriggerScript);
 		return this;
 	}
 

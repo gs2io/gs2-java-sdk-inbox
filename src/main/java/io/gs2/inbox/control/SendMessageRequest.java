@@ -34,11 +34,11 @@ public class SendMessageRequest extends Gs2BasicRequest<SendMessageRequest> {
 	/** 受信ボックスの名前を指定します。 */
 	private String inboxName;
 
-	/** 送信するメッセージ本文 */
-	private String message;
-
 	/** メッセージを送信する相手のユーザID */
 	private String userId;
+
+	/** 送信するメッセージ本文 */
+	private String message;
 
 	/** true を設定すると、メッセージ開封時に受信ボックスに指定された連携用URLにメッセージIDが通知されます */
 	private Boolean cooperation;
@@ -74,35 +74,6 @@ public class SendMessageRequest extends Gs2BasicRequest<SendMessageRequest> {
 	}
 
 	/**
-	 * 送信するメッセージ本文を取得
-	 *
-	 * @return 送信するメッセージ本文
-	 */
-	public String getMessage() {
-		return message;
-	}
-
-	/**
-	 * 送信するメッセージ本文を設定
-	 *
-	 * @param message 送信するメッセージ本文
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	/**
-	 * 送信するメッセージ本文を設定
-	 *
-	 * @param message 送信するメッセージ本文
-	 * @return this
-	 */
-	public SendMessageRequest withMessage(String message) {
-		setMessage(message);
-		return this;
-	}
-
-	/**
 	 * メッセージを送信する相手のユーザIDを取得
 	 *
 	 * @return メッセージを送信する相手のユーザID
@@ -128,6 +99,35 @@ public class SendMessageRequest extends Gs2BasicRequest<SendMessageRequest> {
 	 */
 	public SendMessageRequest withUserId(String userId) {
 		setUserId(userId);
+		return this;
+	}
+
+	/**
+	 * 送信するメッセージ本文を取得
+	 *
+	 * @return 送信するメッセージ本文
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * 送信するメッセージ本文を設定
+	 *
+	 * @param message 送信するメッセージ本文
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	/**
+	 * 送信するメッセージ本文を設定
+	 *
+	 * @param message 送信するメッセージ本文
+	 * @return this
+	 */
+	public SendMessageRequest withMessage(String message) {
+		setMessage(message);
 		return this;
 	}
 
