@@ -16,9 +16,13 @@
 
 package io.gs2.inbox.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
  * メッセージ
@@ -71,6 +75,17 @@ public class Message implements Serializable {
 	}
 
 	/**
+	 * メッセージIDを設定
+	 *
+	 * @param messageId メッセージID
+	 * @return this
+	 */
+	public Message withMessageId(String messageId) {
+		this.messageId = messageId;
+		return this;
+	}
+
+	/**
 	 * 受信ボックスGRNを取得
 	 *
 	 * @return 受信ボックスGRN
@@ -86,6 +101,17 @@ public class Message implements Serializable {
 	 */
 	public void setInboxId(String inboxId) {
 		this.inboxId = inboxId;
+	}
+
+	/**
+	 * 受信ボックスGRNを設定
+	 *
+	 * @param inboxId 受信ボックスGRN
+	 * @return this
+	 */
+	public Message withInboxId(String inboxId) {
+		this.inboxId = inboxId;
+		return this;
 	}
 
 	/**
@@ -107,6 +133,17 @@ public class Message implements Serializable {
 	}
 
 	/**
+	 * 発言者ユーザIDを設定
+	 *
+	 * @param userId 発言者ユーザID
+	 * @return this
+	 */
+	public Message withUserId(String userId) {
+		this.userId = userId;
+		return this;
+	}
+
+	/**
 	 * メッセージ本文を取得
 	 *
 	 * @return メッセージ本文
@@ -122,6 +159,17 @@ public class Message implements Serializable {
 	 */
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	/**
+	 * メッセージ本文を設定
+	 *
+	 * @param message メッセージ本文
+	 * @return this
+	 */
+	public Message withMessage(String message) {
+		this.message = message;
+		return this;
 	}
 
 	/**
@@ -143,6 +191,17 @@ public class Message implements Serializable {
 	}
 
 	/**
+	 * 開封時に通知を出すかを設定
+	 *
+	 * @param cooperation 開封時に通知を出すか
+	 * @return this
+	 */
+	public Message withCooperation(Boolean cooperation) {
+		this.cooperation = cooperation;
+		return this;
+	}
+
+	/**
 	 * 既読状態を取得
 	 *
 	 * @return 既読状態
@@ -158,6 +217,17 @@ public class Message implements Serializable {
 	 */
 	public void setRead(Boolean read) {
 		this.read = read;
+	}
+
+	/**
+	 * 既読状態を設定
+	 *
+	 * @param read 既読状態
+	 * @return this
+	 */
+	public Message withRead(Boolean read) {
+		this.read = read;
+		return this;
 	}
 
 	/**
@@ -178,4 +248,30 @@ public class Message implements Serializable {
 		this.date = date;
 	}
 
+	/**
+	 * 受信日時(エポック秒)を設定
+	 *
+	 * @param date 受信日時(エポック秒)
+	 * @return this
+	 */
+	public Message withDate(Integer date) {
+		this.date = date;
+		return this;
+	}
+
+
+    public ObjectNode toJson() {
+
+		ObjectNode body = JsonNodeFactory.instance.objectNode()
+
+            .put("messageId", this.getMessageId())
+            .put("inboxId", this.getInboxId())
+            .put("userId", this.getUserId())
+            .put("message", this.getMessage())
+            .put("cooperation", this.getCooperation())
+            .put("read", this.getRead())
+            .put("date", this.getDate());
+
+        return body;
+    }
 }

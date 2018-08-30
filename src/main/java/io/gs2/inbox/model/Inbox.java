@@ -16,9 +16,13 @@
 
 package io.gs2.inbox.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
  * 受信ボックス
@@ -95,6 +99,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * 受信ボックスGRNを設定
+	 *
+	 * @param inboxId 受信ボックスGRN
+	 * @return this
+	 */
+	public Inbox withInboxId(String inboxId) {
+		this.inboxId = inboxId;
+		return this;
+	}
+
+	/**
 	 * オーナーIDを取得
 	 *
 	 * @return オーナーID
@@ -110,6 +125,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
+	}
+
+	/**
+	 * オーナーIDを設定
+	 *
+	 * @param ownerId オーナーID
+	 * @return this
+	 */
+	public Inbox withOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+		return this;
 	}
 
 	/**
@@ -131,6 +157,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * 受信ボックス名を設定
+	 *
+	 * @param name 受信ボックス名
+	 * @return this
+	 */
+	public Inbox withName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	/**
 	 * 説明文を取得
 	 *
 	 * @return 説明文
@@ -146,6 +183,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * 説明文を設定
+	 *
+	 * @param description 説明文
+	 * @return this
+	 */
+	public Inbox withDescription(String description) {
+		this.description = description;
+		return this;
 	}
 
 	/**
@@ -167,6 +215,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * サービスクラスを設定
+	 *
+	 * @param serviceClass サービスクラス
+	 * @return this
+	 */
+	public Inbox withServiceClass(String serviceClass) {
+		this.serviceClass = serviceClass;
+		return this;
+	}
+
+	/**
 	 * 開封時自動削除を取得
 	 *
 	 * @return 開封時自動削除
@@ -182,6 +241,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setAutoDelete(Boolean autoDelete) {
 		this.autoDelete = autoDelete;
+	}
+
+	/**
+	 * 開封時自動削除を設定
+	 *
+	 * @param autoDelete 開封時自動削除
+	 * @return this
+	 */
+	public Inbox withAutoDelete(Boolean autoDelete) {
+		this.autoDelete = autoDelete;
+		return this;
 	}
 
 	/**
@@ -203,6 +273,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージの開封通知先URLを設定
+	 *
+	 * @param cooperationUrl メッセージの開封通知先URL
+	 * @return this
+	 */
+	public Inbox withCooperationUrl(String cooperationUrl) {
+		this.cooperationUrl = cooperationUrl;
+		return this;
+	}
+
+	/**
 	 * メッセージ受信時 に実行されるGS2-Scriptを取得
 	 *
 	 * @return メッセージ受信時 に実行されるGS2-Script
@@ -218,6 +299,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setReceiveMessageTriggerScript(String receiveMessageTriggerScript) {
 		this.receiveMessageTriggerScript = receiveMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ受信時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageTriggerScript メッセージ受信時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withReceiveMessageTriggerScript(String receiveMessageTriggerScript) {
+		this.receiveMessageTriggerScript = receiveMessageTriggerScript;
+		return this;
 	}
 
 	/**
@@ -239,6 +331,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージ受信完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param receiveMessageDoneTriggerScript メッセージ受信完了時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withReceiveMessageDoneTriggerScript(String receiveMessageDoneTriggerScript) {
+		this.receiveMessageDoneTriggerScript = receiveMessageDoneTriggerScript;
+		return this;
+	}
+
+	/**
 	 * メッセージ開封時 に実行されるGS2-Scriptを取得
 	 *
 	 * @return メッセージ開封時 に実行されるGS2-Script
@@ -254,6 +357,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setReadMessageTriggerScript(String readMessageTriggerScript) {
 		this.readMessageTriggerScript = readMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ開封時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param readMessageTriggerScript メッセージ開封時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withReadMessageTriggerScript(String readMessageTriggerScript) {
+		this.readMessageTriggerScript = readMessageTriggerScript;
+		return this;
 	}
 
 	/**
@@ -275,6 +389,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージ開封完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param readMessageDoneTriggerScript メッセージ開封完了時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withReadMessageDoneTriggerScript(String readMessageDoneTriggerScript) {
+		this.readMessageDoneTriggerScript = readMessageDoneTriggerScript;
+		return this;
+	}
+
+	/**
 	 * メッセージ削除時 に実行されるGS2-Scriptを取得
 	 *
 	 * @return メッセージ削除時 に実行されるGS2-Script
@@ -290,6 +415,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
 		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
+	}
+
+	/**
+	 * メッセージ削除時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageTriggerScript メッセージ削除時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withDeleteMessageTriggerScript(String deleteMessageTriggerScript) {
+		this.deleteMessageTriggerScript = deleteMessageTriggerScript;
+		return this;
 	}
 
 	/**
@@ -311,6 +447,17 @@ public class Inbox implements Serializable {
 	}
 
 	/**
+	 * メッセージ削除完了時 に実行されるGS2-Scriptを設定
+	 *
+	 * @param deleteMessageDoneTriggerScript メッセージ削除完了時 に実行されるGS2-Script
+	 * @return this
+	 */
+	public Inbox withDeleteMessageDoneTriggerScript(String deleteMessageDoneTriggerScript) {
+		this.deleteMessageDoneTriggerScript = deleteMessageDoneTriggerScript;
+		return this;
+	}
+
+	/**
 	 * 作成日時(エポック秒)を取得
 	 *
 	 * @return 作成日時(エポック秒)
@@ -326,6 +473,17 @@ public class Inbox implements Serializable {
 	 */
 	public void setCreateAt(Integer createAt) {
 		this.createAt = createAt;
+	}
+
+	/**
+	 * 作成日時(エポック秒)を設定
+	 *
+	 * @param createAt 作成日時(エポック秒)
+	 * @return this
+	 */
+	public Inbox withCreateAt(Integer createAt) {
+		this.createAt = createAt;
+		return this;
 	}
 
 	/**
@@ -346,4 +504,38 @@ public class Inbox implements Serializable {
 		this.updateAt = updateAt;
 	}
 
+	/**
+	 * 最終更新日時(エポック秒)を設定
+	 *
+	 * @param updateAt 最終更新日時(エポック秒)
+	 * @return this
+	 */
+	public Inbox withUpdateAt(Integer updateAt) {
+		this.updateAt = updateAt;
+		return this;
+	}
+
+
+    public ObjectNode toJson() {
+
+		ObjectNode body = JsonNodeFactory.instance.objectNode()
+
+            .put("inboxId", this.getInboxId())
+            .put("ownerId", this.getOwnerId())
+            .put("name", this.getName())
+            .put("description", this.getDescription())
+            .put("serviceClass", this.getServiceClass())
+            .put("autoDelete", this.getAutoDelete())
+            .put("cooperationUrl", this.getCooperationUrl())
+            .put("receiveMessageTriggerScript", this.getReceiveMessageTriggerScript())
+            .put("receiveMessageDoneTriggerScript", this.getReceiveMessageDoneTriggerScript())
+            .put("readMessageTriggerScript", this.getReadMessageTriggerScript())
+            .put("readMessageDoneTriggerScript", this.getReadMessageDoneTriggerScript())
+            .put("deleteMessageTriggerScript", this.getDeleteMessageTriggerScript())
+            .put("deleteMessageDoneTriggerScript", this.getDeleteMessageDoneTriggerScript())
+            .put("createAt", this.getCreateAt())
+            .put("updateAt", this.getUpdateAt());
+
+        return body;
+    }
 }
