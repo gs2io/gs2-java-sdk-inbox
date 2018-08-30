@@ -18,6 +18,7 @@ package io.gs2.inbox.control;
 
 import org.json.JSONObject;
 import java.util.List;
+import io.gs2.inbox.model.*;
 import io.gs2.inbox.Gs2Inbox;
 import io.gs2.control.Gs2UserRequest;
 

@@ -18,7 +18,6 @@ package io.gs2.inbox;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import io.gs2.model.Region;
 import io.gs2.util.EncodingUtil;
@@ -32,6 +31,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import io.gs2.AbstractGs2Client;
 import io.gs2.Gs2Constant;
@@ -75,6 +75,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	 */
 	public Gs2InboxClient(IGs2Credential credential, String region) {
 		super(credential, region);
+
 	}
 
 
@@ -349,7 +350,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
             delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
         }
 
-        delete.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
 		doRequest(delete, null);
 
@@ -387,7 +387,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
             delete.setHeader("X-GS2-REQUEST-ID", request.getRequestId());
         }
 
-        delete.setHeader("X-GS2-ACCESS-TOKEN", request.getAccessToken());
 
 		doRequest(delete, null);
 

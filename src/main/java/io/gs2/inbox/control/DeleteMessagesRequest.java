@@ -18,14 +18,15 @@ package io.gs2.inbox.control;
 
 import org.json.JSONObject;
 import java.util.List;
+import io.gs2.inbox.model.*;
 import io.gs2.inbox.Gs2Inbox;
-import io.gs2.control.Gs2UserRequest;
+import io.gs2.control.Gs2BasicRequest;
 
 /**
  * @author Game Server Services, Inc.
  */
 @SuppressWarnings("serial")
-public class DeleteMessagesRequest extends Gs2UserRequest<DeleteMessagesRequest> {
+public class DeleteMessagesRequest extends Gs2BasicRequest<DeleteMessagesRequest> {
 
 	public static class Constant extends Gs2Inbox.Constant {
 		public static final String FUNCTION = "DeleteMessages";
