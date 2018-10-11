@@ -36,7 +36,7 @@ public class DeleteMessagesRequest extends Gs2BasicRequest<DeleteMessagesRequest
 	private String inboxName;
 
 	/** 削除するメッセージのメッセージIDのリストを指定します。 */
-	private String messageIds;
+	private List<String> messageIds;
 
 
 	/**
@@ -73,7 +73,7 @@ public class DeleteMessagesRequest extends Gs2BasicRequest<DeleteMessagesRequest
 	 *
 	 * @return 削除するメッセージのメッセージIDのリストを指定します。
 	 */
-	public String getMessageIds() {
+	public List<String> getMessageIds() {
 		return messageIds;
 	}
 
@@ -82,7 +82,7 @@ public class DeleteMessagesRequest extends Gs2BasicRequest<DeleteMessagesRequest
 	 *
 	 * @param messageIds 削除するメッセージのメッセージIDのリストを指定します。
 	 */
-	public void setMessageIds(String messageIds) {
+	public void setMessageIds(List<String> messageIds) {
 		this.messageIds = messageIds;
 	}
 
@@ -92,7 +92,7 @@ public class DeleteMessagesRequest extends Gs2BasicRequest<DeleteMessagesRequest
 	 * @param messageIds 削除するメッセージのメッセージIDのリストを指定します。
 	 * @return this
 	 */
-	public DeleteMessagesRequest withMessageIds(String messageIds) {
+	public DeleteMessagesRequest withMessageIds(List<String> messageIds) {
 		setMessageIds(messageIds);
 		return this;
 	}

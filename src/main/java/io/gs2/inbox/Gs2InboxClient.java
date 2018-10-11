@@ -134,7 +134,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "";
 
 
-
 		HttpDelete delete = createHttpDelete(
 				url,
 				credential,
@@ -168,7 +167,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
         List<NameValuePair> queryString = new ArrayList<>();
         if(request.getPageToken() != null) queryString.add(new BasicNameValuePair("pageToken", String.valueOf(request.getPageToken())));
         if(request.getLimit() != null) queryString.add(new BasicNameValuePair("limit", String.valueOf(request.getLimit())));
-
 
 		if(queryString.size() > 0) {
 			url += "?" + URLEncodedUtils.format(queryString, "UTF-8");
@@ -204,7 +202,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/serviceClass";
 
 
-
 		HttpGet get = createHttpGet(
 				url,
 				credential,
@@ -236,7 +233,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "";
 
 
-
 		HttpGet get = createHttpGet(
 				url,
 				credential,
@@ -266,7 +262,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	public GetInboxStatusResult getInboxStatus(GetInboxStatusRequest request) {
 
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/status";
-
 
 
 		HttpGet get = createHttpGet(
@@ -339,7 +334,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null || request.getMessageId().equals("") ? "null" : request.getMessageId()) + "";
 
 
-
 		HttpDelete delete = createHttpDelete(
 				url,
 				credential,
@@ -371,8 +365,7 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/multiple";
 
         List<NameValuePair> queryString = new ArrayList<>();
-        if(request.getMessageIds() != null) queryString.add(new BasicNameValuePair("messageIds", String.valueOf(request.getMessageIds())));
-
+        if(request.getMessageIds() != null) queryString.add(new BasicNameValuePair("messageIds", toString(request.getMessageIds())));
 
 		if(queryString.size() > 0) {
 			url += "?" + URLEncodedUtils.format(queryString, "UTF-8");
@@ -413,7 +406,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
         if(request.getPageToken() != null) queryString.add(new BasicNameValuePair("pageToken", String.valueOf(request.getPageToken())));
         if(request.getLimit() != null) queryString.add(new BasicNameValuePair("limit", String.valueOf(request.getLimit())));
 
-
 		if(queryString.size() > 0) {
 			url += "?" + URLEncodedUtils.format(queryString, "UTF-8");
 		}
@@ -449,7 +441,6 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 	public GetMessageResult getMessage(GetMessageRequest request) {
 
 	    String url = Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/" + (request.getMessageId() == null || request.getMessageId().equals("") ? "null" : request.getMessageId()) + "";
-
 
 
 		HttpGet get = createHttpGet(
@@ -527,8 +518,14 @@ public class Gs2InboxClient extends AbstractGs2Client<Gs2InboxClient> {
 
 	public ReadMessagesResult readMessages(ReadMessagesRequest request) {
 
-		ObjectNode body = JsonNodeFactory.instance.objectNode()
-				.put("messageIds", request.getMessageIds());
+		ObjectNode body = JsonNodeFactory.instance.objectNode();
+        if(request.getMessageIds() != null) {
+            List<JsonNode> node = new ArrayList<>();
+            for(String item : request.getMessageIds()) {
+                node.add(JsonNodeFactory.instance.textNode(item));
+            }
+            body.set("messageIds", JsonNodeFactory.instance.arrayNode().addAll(node));
+		}
 
 		HttpPost post = createHttpPost(
 				Gs2Constant.ENDPOINT_HOST + "/inbox/" + (request.getInboxName() == null || request.getInboxName().equals("") ? "null" : request.getInboxName()) + "/message/multiple",
