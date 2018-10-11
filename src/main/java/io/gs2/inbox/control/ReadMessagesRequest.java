@@ -35,8 +35,8 @@ public class ReadMessagesRequest extends Gs2UserRequest<ReadMessagesRequest> {
 	/** 受信ボックスの名前を指定します。 */
 	private String inboxName;
 
-	/** カンマ区切りの開封するメッセージのメッセージIDリスト */
-	private String messageIds;
+	/** 開封するメッセージのメッセージIDリスト */
+	private List<String> messageIds;
 
 
 	/**
@@ -69,30 +69,30 @@ public class ReadMessagesRequest extends Gs2UserRequest<ReadMessagesRequest> {
 	}
 
 	/**
-	 * カンマ区切りの開封するメッセージのメッセージIDリストを取得
+	 * 開封するメッセージのメッセージIDリストを取得
 	 *
-	 * @return カンマ区切りの開封するメッセージのメッセージIDリスト
+	 * @return 開封するメッセージのメッセージIDリスト
 	 */
-	public String getMessageIds() {
+	public List<String> getMessageIds() {
 		return messageIds;
 	}
 
 	/**
-	 * カンマ区切りの開封するメッセージのメッセージIDリストを設定
+	 * 開封するメッセージのメッセージIDリストを設定
 	 *
-	 * @param messageIds カンマ区切りの開封するメッセージのメッセージIDリスト
+	 * @param messageIds 開封するメッセージのメッセージIDリスト
 	 */
-	public void setMessageIds(String messageIds) {
+	public void setMessageIds(List<String> messageIds) {
 		this.messageIds = messageIds;
 	}
 
 	/**
-	 * カンマ区切りの開封するメッセージのメッセージIDリストを設定
+	 * 開封するメッセージのメッセージIDリストを設定
 	 *
-	 * @param messageIds カンマ区切りの開封するメッセージのメッセージIDリスト
+	 * @param messageIds 開封するメッセージのメッセージIDリスト
 	 * @return this
 	 */
-	public ReadMessagesRequest withMessageIds(String messageIds) {
+	public ReadMessagesRequest withMessageIds(List<String> messageIds) {
 		setMessageIds(messageIds);
 		return this;
 	}
